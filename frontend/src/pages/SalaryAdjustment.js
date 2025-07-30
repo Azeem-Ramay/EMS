@@ -12,7 +12,7 @@ const SalaryAdjustment = () => {
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     departmentId: '',
-    performanceScore: ''
+    performanceScore: '',
   });
 
   useEffect(() => {
@@ -22,12 +22,13 @@ const SalaryAdjustment = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [departmentsRes, employeesRes, historyRes, statsRes] = await Promise.all([
-        departmentAPI.getAll(),
-        employeeAPI.getAll(),
-        employeeAPI.getSalaryAdjustments(),
-        employeeAPI.getSalaryStats()
-      ]);
+      const [departmentsRes, employeesRes, historyRes, statsRes] =
+        await Promise.all([
+          departmentAPI.getAll(),
+          employeeAPI.getAll(),
+          employeeAPI.getSalaryAdjustments(),
+          employeeAPI.getSalaryStats(),
+        ]);
       setDepartments(departmentsRes.data);
       setEmployees(employeesRes.data);
       setAdjustmentHistory(historyRes.data);
@@ -54,7 +55,7 @@ const SalaryAdjustment = () => {
   };
 
   const getDepartmentName = (departmentId) => {
-    const dept = departments.find(d => d.id === departmentId);
+    const dept = departments.find((d) => d.id === departmentId);
     return dept ? dept.name : 'Unknown';
   };
 
@@ -71,7 +72,7 @@ const SalaryAdjustment = () => {
   };
 
   const getEmployeesInDepartment = (departmentId) => {
-    return employees.filter(emp => emp.departmentId === departmentId);
+    return employees.filter((emp) => emp.departmentId === departmentId);
   };
 
   return (
@@ -88,7 +89,9 @@ const SalaryAdjustment = () => {
           <div className="card">
             <div className="card-header">
               <h2>New Salary Adjustment</h2>
-              <p>Select a department and performance score to adjust salaries</p>
+              <p>
+                Select a department and performance score to adjust salaries
+              </p>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -97,24 +100,34 @@ const SalaryAdjustment = () => {
                   <select
                     className="form-input"
                     value={formData.departmentId}
-                    onChange={(e) => setFormData({...formData, departmentId: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, departmentId: e.target.value })
+                    }
                     required
                   >
                     <option value="">Select Department</option>
                     {departments.map((dept) => (
                       <option key={dept.id} value={dept.id}>
-                        {dept.name} ({getEmployeesInDepartment(dept.id).length} employees)
+                        {dept.name} ({getEmployeesInDepartment(dept.id).length}{' '}
+                        employees)
                       </option>
                     ))}
                   </select>
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Performance Score (0-100)</label>
+                  <label className="form-label">
+                    Performance Score (0-100)
+                  </label>
                   <input
                     type="number"
                     className="form-input"
                     value={formData.performanceScore}
-                    onChange={(e) => setFormData({...formData, performanceScore: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        performanceScore: e.target.value,
+                      })
+                    }
                     min="0"
                     max="100"
                     required
@@ -126,13 +139,19 @@ const SalaryAdjustment = () => {
                     <div className="preview-grid">
                       <div className="preview-item">
                         <span>Performance Level:</span>
-                        <span className={`badge badge-${getPerformanceLevel(formData.performanceScore).color}`}>
+                        <span
+                          className={`badge badge-${
+                            getPerformanceLevel(formData.performanceScore).color
+                          }`}
+                        >
                           {getPerformanceLevel(formData.performanceScore).level}
                         </span>
                       </div>
                       <div className="preview-item">
                         <span>Base Increase:</span>
-                        <span>{getAdjustmentPercentage(formData.performanceScore)}%</span>
+                        <span>
+                          {getAdjustmentPercentage(formData.performanceScore)}%
+                        </span>
                       </div>
                       <div className="preview-item">
                         <span>Tenure Bonus:</span>
@@ -140,7 +159,7 @@ const SalaryAdjustment = () => {
                       </div>
                       <div className="preview-item">
                         <span>Max Salary Cap:</span>
-                        <span>$200,000</span>
+                        <span>₹20,000,000</span>
                       </div>
                     </div>
                   </div>
@@ -216,12 +235,22 @@ const SalaryAdjustment = () => {
                         <td>{getDepartmentName(adjustment.departmentId)}</td>
                         <td>{adjustment.performanceScore}</td>
                         <td>
-                          <span className={`badge badge-${getPerformanceLevel(adjustment.performanceScore).color}`}>
-                            {getPerformanceLevel(adjustment.performanceScore).level}
+                          <span
+                            className={`badge badge-${
+                              getPerformanceLevel(adjustment.performanceScore)
+                                .color
+                            }`}
+                          >
+                            {
+                              getPerformanceLevel(adjustment.performanceScore)
+                                .level
+                            }
                           </span>
                         </td>
                         <td>{adjustment.employeesAffected || 'N/A'}</td>
-                        <td>{new Date(adjustment.timestamp).toLocaleDateString()}</td>
+                        <td>
+                          {new Date(adjustment.timestamp).toLocaleDateString()}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -240,4 +269,4 @@ const SalaryAdjustment = () => {
   );
 };
 
-export default SalaryAdjustment; 
+export default SalaryAdjustment;

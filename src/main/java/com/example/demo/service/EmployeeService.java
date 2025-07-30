@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class EmployeeService {
     
     private static final Logger logger = LoggerFactory.getLogger(EmployeeService.class);
-    private static final BigDecimal MAX_SALARY = new BigDecimal("200000");
+    private static final BigDecimal MAX_SALARY = new BigDecimal("20000000"); // ₹20,000,000 PKR
     private static final BigDecimal TENURE_BONUS_PERCENTAGE = new BigDecimal("0.05");
     
     @Autowired
@@ -129,8 +129,9 @@ public class EmployeeService {
         }
         
         // Check if department exists
-        Department department = departmentRepository.findById(adjustmentDto.getDepartmentId())
-                .orElseThrow(() -> new ResourceNotFoundException("Department", "id", adjustmentDto.getDepartmentId()));
+        if (!departmentRepository.existsById(adjustmentDto.getDepartmentId())) {
+            throw new ResourceNotFoundException("Department", "id", adjustmentDto.getDepartmentId());
+        }
         
         // Get employees in the department
         List<Employee> employees = employeeRepository.findByDepartmentId(adjustmentDto.getDepartmentId());
