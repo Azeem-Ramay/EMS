@@ -18,7 +18,7 @@ A comprehensive full-stack application with Spring Boot backend and React fronte
 - **Employee Management**: Complete CRUD operations with search functionality
 - **Department Management**: Card-based layout for department management
 - **Salary Adjustment**: Dedicated interface for performance-based salary adjustments
-- **Currency Display**: All salary values displayed in Indian Rupees (₹)
+- **Currency Display**: All salary values displayed in Pakistani Ruppees
 - **Living Animations**: Hover effects with scale, rotation, and neon glow
 - **Responsive Design**: Mobile-friendly interface with adaptive layouts
 
