@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "7af24436-668d-4851-aabb-6cdcf5efbacd",
+		"name": "Salary Adjustments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47161473",
+		"_collection_link": "https://azeem-ramay-6800671.postman.co/workspace/Muhammad-Azeem's-Workspace~1a6dad3b-56b4-4b83-8afe-ab9da426ce9e/collection/47161473-7af24436-668d-4851-aabb-6cdcf5efbacd?action=share&source=collection_link&creator=47161473"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departmentId\": 2,\r\n    \"performanceScore\": 85\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/adjust-salary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"adjust-salary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/salary-adjustments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"salary-adjustments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/salary-adjustments/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"salary-adjustments",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

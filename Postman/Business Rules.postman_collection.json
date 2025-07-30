@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "976e70b4-f5d6-4dcd-a6ec-7ded061ebcf1",
+		"name": "Business Rules",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47161473",
+		"_collection_link": "https://azeem-ramay-6800671.postman.co/workspace/Muhammad-Azeem's-Workspace~1a6dad3b-56b4-4b83-8afe-ab9da426ce9e/collection/47161473-976e70b4-f5d6-4dcd-a6ec-7ded061ebcf1?action=share&source=collection_link&creator=47161473"
+	},
+	"item": [
+		{
+			"name": "15% Increase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departmentId\": 2,\r\n    \"performanceScore\": 95\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/adjust-salary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"adjust-salary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10% increase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departmentId\": 2,\r\n    \"performanceScore\": 85\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/adjust-salary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"adjust-salary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No increase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departmentId\": 2,\r\n    \"performanceScore\": 60\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/adjust-salary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"adjust-salary"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
